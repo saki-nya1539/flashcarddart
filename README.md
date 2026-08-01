@@ -109,6 +109,31 @@ sequenceDiagram
 | `dueDate` | DateTime | 次回出題日 |
 | `lastReviewed` | DateTime? | 最終復習日時 |
 
+
+**ER図**
+
+​```mermaid
+erDiagram
+    DECK ||--o{ FLASHCARD : "含む"
+    DECK {
+        string id PK
+        string name
+        string description
+    }
+    FLASHCARD {
+        string id PK
+        string deckId FK
+        string front
+        string back
+        double easeFactor
+        int intervalDays
+        int repetitions
+        datetime dueDate
+        datetime lastReviewed
+    }
+​```
+
+DECKを親、FLASHCARDを子とする1対多の関係で、FLASHCARD側の`deckId`がDECKの`id`を参照するFKです。`DeckStore`はこれを`List<Deck>`と`List<Flashcard>`の2つのフラットなリストとして保持し、`deleteDeck`実行時に該当する`Flashcard`もまとめて削除することでこの参照関係を維持しています（永続化していないため実際のDB外部キー制約ではありませんが、構造としては正規化されています）。
 ## セットアップ
 
 Flutter SDK（3.x系、Dart 3.x同梱）が必要です。

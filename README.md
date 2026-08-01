@@ -1,6 +1,6 @@
-# FlashCardDart 📇
+# FlashCardDart 
 
-Flutterで動く、間隔反復（スペースドリピティション）方式のフラッシュカード学習アプリ。「15の言語で15個のアプリを作る」ポートフォリオプロジェクトの12本目（Dart編）。
+Flutterで動く、間隔反復（スペースドリピティション）方式のフラッシュカード学習アプリ。
 
 ![CI](https://github.com/saki-nya1539/flashcarddart/actions/workflows/ci.yml/badge.svg)
 
